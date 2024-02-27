@@ -17,9 +17,9 @@ router.post("/order/create", orderController.createOrder);
 
 router.put("/order/:id/edit", orderController.editOrder);
 
-router.post("/user/create", userController.createUser);
+router.post("/user/signup", userController.signUp);
 
-router.post("/user/login", userController.getUser);
+router.post("/user/login", userController.loginUser);
 
 // router.post("/user/signup", userController.getUser);
 

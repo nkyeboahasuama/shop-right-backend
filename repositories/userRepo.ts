@@ -1,12 +1,21 @@
 import { IUser, IUserRepository } from "../core/interfaces/userTypes";
 import { User } from "../models/userModel";
 
-const createUser = async (user: IUser) => {
+const signUp = async (user: IUser) => {
   try {
-    const newUser = new User(user);
-    return await newUser.save();
-  } catch (error) {
-    throw new Error(`Repo error: ${error}`);
+    const newUser = await User.signup(user);
+    return newUser;
+  } catch (error: any) {
+    throw Error(error.message);
+  }
+};
+
+const loginUser = async (user_info: IUser) => {
+  try {
+    const user = await User.login(user_info);
+    return user;
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 };
 
@@ -48,7 +57,8 @@ const updateUserName = async (id: string, newName: string) => {
 };
 
 export const UserRepository: IUserRepository = {
-  createUser,
+  signUp,
+  loginUser,
   getUserByEmail,
   getUserById,
   updatePassword,
