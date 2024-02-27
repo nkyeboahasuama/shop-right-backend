@@ -1,5 +1,10 @@
 export class UserEntity {
-  constructor(public name: string, public password: any, public email: string) {
+  constructor(
+    public email: string,
+    public password: any,
+
+    public name?: string
+  ) {
     this.name = name;
   }
   getName() {

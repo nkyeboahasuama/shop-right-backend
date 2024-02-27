@@ -1,11 +1,13 @@
+// export interface BaseUser
+
 export interface IUser {
-  name: string;
+  name?: string;
 
   email: string;
 
   password: any;
 
-  id?: string;
+  _id?: string;
 
   phone?: string;
 
@@ -15,7 +17,9 @@ export interface IUser {
 }
 
 export interface IUserRepository {
-  createUser: (user: IUser) => Promise<IUser>;
+  signUp: (user: IUser) => Promise<IUser>;
+
+  loginUser: (user: IUser) => Promise<IUser>;
 
   getUserById: (id: string) => Promise<IUser | null>;
 
